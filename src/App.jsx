@@ -11,15 +11,15 @@ export const App = ({ position = [0, 0, 2.5], fov = 25 }) => (
     <pointLight position={[2, 2, 10]} intensity={0.5} />
     {/* <pointLight position={[20, 10, -10]} intensity={3} /> */}
     <Environment files="./potsdamer_platz_1k.hdr" />
+    <Backdrop />
     {/* <CameraRig>
-      <Backdrop />
       <Center>
       </Center>
     </CameraRig> */}
     <DoorModel position={[0, -1, 0]} rotation={[0, Math.PI / 2, 0]} />
     <planeBufferGeometry castShadow args={[100, 100]} />
     <OrbitControls
-      enablePan={false}
+      enablePan={true}
       enableZoom={true}
       enableDamping={true}
       dampingFactor={0.08}
@@ -69,13 +69,18 @@ function CameraRig({ children }) {
 
 
 function DoorModel(props) {
-  const { nodes, materials } = useGLTF('./door/DOOR2.gltf')
+  const { nodes, materials } = useGLTF('./door/DOOR_B.gltf')
   const snap = useSnapshot(state)
 
 
   if (materials['Baked_B_4.002']) {
     materials['Baked_B_4.002'].metalness = 0.5
     materials['Baked_B_4.002'].roughness = 0.55
+  }
+  if (materials.Gold) {
+    materials.Gold.color.set("#f7c766")
+    materials.Gold.metalness = 1
+    materials.Gold.roughness = 0.25
   }
 
   useFrame((state, delta) => easing.dampC(materials['Baked_B_4.002'].color, snap.color, 0.25, delta))
@@ -95,13 +100,14 @@ function DoorModel(props) {
         <mesh geometry={nodes.Mesh_80005.geometry} material={materials['Baked_B_4.002']} />
         <mesh geometry={nodes.Mesh_80005_1.geometry} material={materials.Gold} />
       </group>
-      <mesh geometry={nodes.door004.geometry} material={materials['Baked_B_4.002']} position={[0.037, 1.007, -0.435]} scale={[0.808, 0.081, 1]} />
-      <mesh geometry={nodes.Plane.geometry} material={materials['Baked_B_4.001']} position={[0.044, 0, -0.193]} />
+      <mesh geometry={nodes.door004.geometry} material={materials['Baked_B_4.002']} position={[0.039, 1.007, -0.435]} scale={[0.808, 0.081, 1]} />
+      <mesh geometry={nodes.Plane001.geometry} material={materials.blaack} position={[0.037, 1.007, -0.342]} rotation={[0, 0, -Math.PI / 2]} scale={[0.099, 0.105, 0.105]} />
+      <mesh geometry={nodes.Plane.geometry} material={materials.ground} position={[0.044, 0, -0.193]} />
     </group>
   )
 }
 
 export default App;
 
-useGLTF.preload('./door/DOOR2.gltf')
+useGLTF.preload('./door/DOOR_B.gltf')
   ;['/react.png', '/three2.png', '/pmndrs.png'].forEach(useTexture.preload)
