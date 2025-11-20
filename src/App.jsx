@@ -69,7 +69,7 @@ function CameraRig({ children }) {
 
 
 function DoorModel(props) {
-  const { nodes, materials } = useGLTF('./door/DOOR_B.gltf')
+  const { nodes, materials } = useGLTF('./door/DOOR_B_1.gltf')
   const snap = useSnapshot(state)
 
 
@@ -84,14 +84,9 @@ function DoorModel(props) {
   }
 
   useFrame((state, delta) => easing.dampC(materials['Baked_B_4.002'].color, snap.color, 0.25, delta))
-
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.door001.geometry} material={materials['Baked_B_4.002']} position={[0.05, 0, 0.49]} />
-      <group position={[0, 0, 0.5]}>
-        <mesh geometry={nodes.Mesh_80004.geometry} material={materials['Baked_B_4.002']} />
-        <mesh geometry={nodes.Mesh_80004_1.geometry} material={materials['Baked_B_4.002']} />
-      </group>
       <group position={[0.02, 1.074, -0.561]}>
         <mesh geometry={nodes.Mesh_88002.geometry} material={materials.Blackhandle} />
         <mesh geometry={nodes.Mesh_88002_1.geometry} material={materials.numberkey} />
@@ -103,11 +98,13 @@ function DoorModel(props) {
       <mesh geometry={nodes.door004.geometry} material={materials['Baked_B_4.002']} position={[0.039, 1.007, -0.435]} scale={[0.808, 0.081, 1]} />
       <mesh geometry={nodes.Plane001.geometry} material={materials.blaack} position={[0.037, 1.007, -0.342]} rotation={[0, 0, -Math.PI / 2]} scale={[0.099, 0.105, 0.105]} />
       <mesh geometry={nodes.Plane.geometry} material={materials.ground} position={[0.044, 0, -0.193]} />
+      <mesh geometry={nodes.door005.geometry} material={materials['Baked_B_4.002']} position={[0.044, 1.255, -0.09]} />
+      <mesh geometry={nodes.door006.geometry} material={materials['Baked_B_4.002']} position={[0, 0, 0.5]} />
     </group>
   )
 }
 
 export default App;
 
-useGLTF.preload('./door/DOOR_B.gltf')
+useGLTF.preload('./door/DOOR_B_1.gltf')
   ;['/react.png', '/three2.png', '/pmndrs.png'].forEach(useTexture.preload)
