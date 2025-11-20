@@ -89,7 +89,7 @@ function DoorModel(props) {
     <group {...props} dispose={null}>
       <mesh geometry={nodes.door001.geometry} material={materials['Baked_B_4.002']} position={[0.05, 0, 0.49]} />
       <group position={[0, 0, 0.5]}>
-        <mesh geometry={nodes.Mesh_80004.geometry} material={materials['Baked_B_4.001']} />
+        <mesh geometry={nodes.Mesh_80004.geometry} material={materials['Baked_B_4.002']} />
         <mesh geometry={nodes.Mesh_80004_1.geometry} material={materials['Baked_B_4.002']} />
       </group>
       <group position={[0.02, 1.074, -0.561]}>
