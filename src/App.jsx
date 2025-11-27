@@ -68,7 +68,7 @@ function CameraRig({ children }) {
 }
 
 function DoorModel(props) {
-  const { nodes, materials } = useGLTF('./door/DOOR_C_6.gltf')
+  const { nodes, materials } = useGLTF('./door/DOOR_C_9.gltf?v=3')
   const snap = useSnapshot(state)
 
 
@@ -90,12 +90,10 @@ function DoorModel(props) {
         <mesh geometry={nodes.Mesh_88002.geometry} material={materials.Blackhandle} />
         <mesh geometry={nodes.Mesh_88002_1.geometry} material={materials.numberkey} />
       </group>
-      <group position={[0, 0, 0.5]}>
-        <mesh geometry={nodes.Mesh_80005.geometry} material={materials['Baked_B_4.002']} />
-        <mesh geometry={nodes.Mesh_80005_1.geometry} material={materials.Gold} />
-      </group>
+      <mesh geometry={nodes.door003.geometry} material={materials.Gold} position={[0, 0, 0.5]} />
       <mesh geometry={nodes.door004.geometry} material={materials['Baked_B_4.002']} position={[0.039, 1.007, -0.435]} scale={[0.808, 0.081, 1]} />
       <mesh geometry={nodes.Plane001.geometry} material={materials.blaack} position={[0.037, 1.007, -0.342]} rotation={[0, 0, -Math.PI / 2]} scale={[0.099, 0.105, 0.105]} />
+      <mesh geometry={nodes.door002.geometry} material={materials['Baked_B_4.002']} position={[0, 0, 0.5]} />
       <mesh geometry={nodes.Plane.geometry} material={materials.ground} position={[0.044, 0, -0.2]} />
       <mesh geometry={nodes.door005.geometry} material={materials['Baked_B_4.002']} position={[0.044, 1.255, -0.09]} />
       <mesh geometry={nodes.door006.geometry} material={materials['Baked_B_4.002']} position={[0, 0, 0.5]} />
@@ -105,5 +103,5 @@ function DoorModel(props) {
 
 export default App;
 
-useGLTF.preload('./door/DOOR_C_6.gltf')
+useGLTF.preload('./door/DOOR_C_9.gltf?v=3')
   ;['/react.png', '/three2.png', '/pmndrs.png'].forEach(useTexture.preload)
